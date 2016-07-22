@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/game_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:padding="@dimen/padding">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/background"
+            android:padding="@dimen/paddingSE">
+
+            <ImageView
+                android:id="@+id/game_photo"
+                android:layout_width="128dp"
+                android:layout_height="172dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/game_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/game_photo"
+                android:layout_toRightOf="@id/game_photo"
+                android:paddingEnd="@dimen/paddingSE"
+                android:paddingStart="@dimen/paddingSE"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/game_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_name"
+                android:layout_toEndOf="@id/game_photo"
+                android:layout_toRightOf="@id/game_photo"
+                android:paddingEnd="@dimen/paddingSE"
+                android:paddingStart="@dimen/paddingSE"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/game_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_year"
+                android:layout_toEndOf="@id/game_photo"
+                android:layout_toRightOf="@id/game_photo"
+                android:paddingEnd="@dimen/paddingSE"
+                android:paddingStart="@dimen/paddingSE"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/game_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/game_style"
+                android:layout_toEndOf="@id/game_photo"
+                android:layout_toRightOf="@id/game_photo"
+                android:paddingEnd="@dimen/paddingSE"
+                android:paddingStart="@dimen/paddingSE"
+                android:textAppearance="?android:textAppearanceMedium" />
+            <Button
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_top_buttom"
+                android:layout_marginTop="@dimen/padding_top_buttom"
+                android:layout_below="@id/game_state"
+                android:layout_toEndOf="@id/game_photo"
+                android:layout_toRightOf="@id/game_photo"
+                android:background="@drawable/buttonshape"
+                android:text="@string/trade" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_top_buttom"
+                android:layout_marginTop="@dimen/padding_top_buttom"
+                android:layout_below="@id/game_state"
+                android:layout_toEndOf="@id/game_photo"
+                android:layout_toRightOf="@id/game_photo"
+                android:background="@drawable/buttonshape"
+                android:text="@string/seeUser" />
+        </RelativeLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/game_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/background"
+            android:padding="@dimen/paddingSE"
+            android:textAppearance="?android:textAppearanceMedium" />
+    </LinearLayout>
+
+</ScrollView>
