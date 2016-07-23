@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import com.example.hamid.sharevid.R;
 import com.example.hamid.sharevid.activities.GameDetailActivity;
+import com.example.hamid.sharevid.activities.MainActivity;
 import com.example.hamid.sharevid.adapters.GameAdapter;
+import com.example.hamid.sharevid.fragments.GameDetailFragment;
 
 /**
  * Created by hamid on 26/06/2016.
@@ -34,8 +36,10 @@ private Context context;
     @Override
     public void onClick(View v) {
         Toast.makeText(itemView.getContext(), "Clicked Position = " + getPosition(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(context, GameDetailActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("Fragment", R.id.detail_fragment_id);
         intent.putExtra("Game", getPosition());
+
         context.startActivity(intent);
     }
 

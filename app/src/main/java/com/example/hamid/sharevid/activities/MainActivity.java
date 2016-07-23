@@ -3,6 +3,8 @@ package com.example.hamid.sharevid.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,8 @@ import android.view.MenuItem;
 
 import com.example.hamid.sharevid.R;
 import com.example.hamid.sharevid.adapters.GameAdapter;
+import com.example.hamid.sharevid.fragments.GameDetailFragment;
+import com.example.hamid.sharevid.fragments.GameFragment;
 import com.example.hamid.sharevid.model.GameObject;
 
 import java.util.List;
@@ -28,8 +32,7 @@ import static com.example.hamid.sharevid.model.GameObject.getListItemData;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<List<GameObject>> {
 
-    private GameAdapter gameAdapter;
-    private StaggeredGridLayoutManager staggeredGridLayoutManager;
+    private Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.flContent, new GameFragment()).commit();
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,15 +61,30 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
+        Bundle args = getIntent().getExtras();
+        Class fragmentClass = null;
+        if (args != null) {
+            int classFragement = args.getInt("Fragment");
+            switch (classFragement) {
+                case R.id.detail_fragment_id:
+                    fragmentClass = GameDetailFragment.class;
+                    break;
+            }
 
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
-        recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        List<GameObject> staggeredList = getListItemData();
 
-        gameAdapter = new GameAdapter(this, staggeredList);
-        recyclerView.setAdapter(gameAdapter);
+            try {
+                mFragment = (Fragment) fragmentClass.newInstance();
+                mFragment.setArguments(args);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (mFragment != null) {
+            // Insert the fragment by replacing any existing fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, mFragment).commit();
+        }
     }
 
     @Override
@@ -104,24 +124,40 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Class fragmentClass = null;
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_home) {
+            fragmentClass = GameFragment.class;
+        } else if (id == R.id.nav_profile) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_trades) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_message) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_notifications) {
+
+        } else if (id == R.id.nav_help) {
 
         }
 
+        try {
+            mFragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Highlight the selected item has been done by NavigationView
+        item.setChecked(true);
+        // Set action bar title
+        setTitle(item.getTitle());
+        // Close the navigation drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+
     }
 
     @Override

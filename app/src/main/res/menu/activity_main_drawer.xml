@@ -3,34 +3,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/Home"
+            android:checked="true"/>
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="@string/profile" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/settings" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/trades_information">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_trades"
+                android:icon="@drawable/ic_cached_black_24dp"
+                android:title="@string/trades" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_message"
+                android:icon="@drawable/ic_message_black_24dp"
+                android:title="@string/messages" />
+            <item
+                android:id="@+id/nav_notifications"
+                android:icon="@drawable/ic_notifications_black_24dp"
+                android:title="@string/notifications" />
         </menu>
     </item>
-
+    <group android:id="@+id/newGroup">
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help_black_24dp"
+            android:title="@string/help" />
+    </group>
 </menu>
