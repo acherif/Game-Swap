@@ -16,4 +16,7 @@
     <string name="messages">Messages</string>
     <string name="notifications">Notifications</string>
     <string name="help">Help</string>
+    <string name="year">Year : </string>
+    <string name="state">State :</string>
+    <string name="back">Back</string>
 </resources>

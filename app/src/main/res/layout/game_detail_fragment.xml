@@ -1,108 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/game_detail"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:padding="@dimen/paddingSE">
 
+    <ImageView
+        android:id="@+id/game_photo"
+        android:layout_width="128dp"
+        android:layout_height="172dp"
+        android:scaleType="fitXY" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/game_detail"
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/game_photo"
+        android:layout_toRightOf="@id/game_photo"
+        android:paddingEnd="@dimen/paddingSE"
+        android:paddingStart="@dimen/paddingSE"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/game_description"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_name"
+        android:layout_toEndOf="@id/game_photo"
+        android:layout_toRightOf="@id/game_photo"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:padding="@dimen/paddingSE"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/game_year_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_description"
+        android:layout_toEndOf="@id/game_photo"
+        android:layout_toRightOf="@id/game_photo"
+        android:paddingEnd="@dimen/paddingSE"
+        android:paddingStart="@dimen/paddingSE"
+        android:text="@string/year"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/game_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_description"
+        android:layout_toEndOf="@id/game_year_text"
+        android:layout_toRightOf="@id/game_year_text"
+        android:paddingEnd="@dimen/paddingSE"
+        android:paddingStart="@dimen/paddingSE"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/game_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_year_text"
+        android:layout_toEndOf="@id/game_photo"
+        android:layout_toRightOf="@id/game_photo"
+        android:paddingEnd="@dimen/paddingSE"
+        android:paddingStart="@dimen/paddingSE"
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/game_state_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_style"
+        android:padding="@dimen/paddingSE"
+        android:text="@string/state"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/game_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/game_style"
+        android:layout_toEndOf="@id/game_state_text"
+        android:layout_toRightOf="@id/game_state_text"
+        android:padding="@dimen/paddingSE"
+        android:textAppearance="?android:textAppearanceMedium" />
+    <View
+        android:id="@+id/line"
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/game_state"
+        android:background="#000000"
+        android:layout_margin="@dimen/paddingSE"/>
+    <ImageView
+        android:id="@+id/user_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_marginLeft="@dimen/paddingSE"
+        android:layout_marginRight="@dimen/paddingSE"
+        android:background="@drawable/ic_account_circle_black_24dp"
+        />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:orientation="vertical"
-        android:padding="@dimen/padding">
+        android:text="Hazem Chaouch"
+        android:layout_marginLeft="@dimen/paddingSE"
+        android:layout_marginRight="@dimen/paddingSE"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_below="@id/line"
+        android:layout_toEndOf="@id/user_photo"
+        android:layout_toRightOf="@id/user_photo"
+        />
+    <Button
+        android:id="@+id/seeUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_toEndOf="@id/user_name"
+        android:layout_toRightOf="@id/user_name"
+        android:layout_marginLeft="@dimen/paddingSE"
+        android:layout_marginRight="@dimen/paddingSE"
+        android:background="@drawable/buttonshape"
+        android:text="@string/seeUser" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/background"
-            android:padding="@dimen/paddingSE">
+    <Button
+        android:id="@+id/nav_message"
+        android:layout_width="@dimen/image_button_width"
+        android:layout_height="@dimen/image_button_height"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/line"
+        android:layout_marginLeft="@dimen/paddingSE"
+        android:layout_marginStart="@dimen/paddingSE"
+        android:background="@drawable/ic_message_black_24dp" />
 
-            <ImageView
-                android:id="@+id/game_photo"
-                android:layout_width="128dp"
-                android:layout_height="172dp"
-                android:scaleType="fitXY" />
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="start"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="@dimen/padding_top_buttom"
+        android:background="@drawable/buttonshape"
+        android:text="@string/back" />
 
-            <TextView
-                android:id="@+id/game_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/game_photo"
-                android:layout_toRightOf="@id/game_photo"
-                android:paddingEnd="@dimen/paddingSE"
-                android:paddingStart="@dimen/paddingSE"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/game_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/game_name"
-                android:layout_toEndOf="@id/game_photo"
-                android:layout_toRightOf="@id/game_photo"
-                android:paddingEnd="@dimen/paddingSE"
-                android:paddingStart="@dimen/paddingSE"
-                android:textAppearance="?android:textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/game_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/game_year"
-                android:layout_toEndOf="@id/game_photo"
-                android:layout_toRightOf="@id/game_photo"
-                android:paddingEnd="@dimen/paddingSE"
-                android:paddingStart="@dimen/paddingSE"
-                android:textAppearance="?android:textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/game_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/game_style"
-                android:layout_toEndOf="@id/game_photo"
-                android:layout_toRightOf="@id/game_photo"
-                android:paddingEnd="@dimen/paddingSE"
-                android:paddingStart="@dimen/paddingSE"
-                android:textAppearance="?android:textAppearanceMedium" />
-            <Button
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_top_buttom"
-                android:layout_marginTop="@dimen/padding_top_buttom"
-                android:layout_below="@id/game_state"
-                android:layout_toEndOf="@id/game_photo"
-                android:layout_toRightOf="@id/game_photo"
-                android:background="@drawable/buttonshape"
-                android:text="@string/trade" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_top_buttom"
-                android:layout_marginTop="@dimen/padding_top_buttom"
-                android:layout_below="@id/game_state"
-                android:layout_toEndOf="@id/game_photo"
-                android:layout_toRightOf="@id/game_photo"
-                android:background="@drawable/buttonshape"
-                android:text="@string/seeUser" />
-        </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="@dimen/padding_top_buttom"
+        android:background="@drawable/buttonshape"
+        android:text="@string/trade" />
 
 
-
-
-        <TextView
-            android:id="@+id/game_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/background"
-            android:padding="@dimen/paddingSE"
-            android:textAppearance="?android:textAppearanceMedium" />
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>

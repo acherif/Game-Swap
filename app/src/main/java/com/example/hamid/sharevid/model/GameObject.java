@@ -20,7 +20,8 @@ public class GameObject implements Parcelable {
     private String style;
     private String state;
     private int photo;
-private String description;
+    private String description;
+
     public GameObject(String name, String state, int year, String style, int photo, String description) {
         this.name = name;
         this.state = state;
@@ -79,6 +80,7 @@ private String description;
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(mData);
     }
+
     public static final Creator<GameObject> CREATOR = new Creator<GameObject>() {
         public GameObject createFromParcel(Parcel in) {
             return new GameObject(in);
@@ -94,7 +96,7 @@ private String description;
         mData = in.readInt();
     }
 
-    public static List<GameObject> getListItemData(){
+    public static List<GameObject> getListItemData() {
         List<GameObject> listViewItems = new ArrayList<>();
         listViewItems.add(new GameObject("Assasins Creed Syndicate", GameState.AsNew.getValue(), 2014, "Action Adventure", R.drawable.assasins_creed_syndicate, "Assassin's Creed Syndicate is an action-adventure video game developed by Ubisoft Quebec and published by Ubisoft. It was released on October 23, 2015, for the PlayStation 4 and Xbox One, and on November 19, 2015, for Microsoft Windows. It is the ninth major installment in the Assassin's Creed series, and the successor to 2014's Assassin's Creed Unity."));
         listViewItems.add(new GameObject("Fifa 16", GameState.AsNew.getValue(), 2015, "Sport", R.drawable.fifa_16_jaquette_antoine_griezmann, "FIFA 16 is an association football simulation video game developed by EA Canada and published by EA Sports for Microsoft Windows, PlayStation 3, PlayStation 4, Xbox 360, Xbox One, Android and iOS."));

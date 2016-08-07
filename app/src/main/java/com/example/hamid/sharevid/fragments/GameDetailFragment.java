@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hamid.sharevid.R;
@@ -32,7 +33,7 @@ public class GameDetailFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        LinearLayout gameDetailView = (LinearLayout) view.findViewById(R.id.game_detail);
+        RelativeLayout gameDetailView = (RelativeLayout) view.findViewById(R.id.game_detail);
         GameObject game = getListItemData().get(getArguments().getInt("Game"));
 
 
@@ -45,8 +46,9 @@ public class GameDetailFragment extends Fragment {
         TextView gameState = (TextView) gameDetailView.findViewById(R.id.game_state);
         gameState.setText(game.getState());
         ImageView gamePhoto = (ImageView) gameDetailView.findViewById(R.id.game_photo);
-        Bitmap image = BitmapFactory.decodeResource(getContext().getResources(), game.getPhoto());
-        gamePhoto.setImageBitmap(ImageHelper.getRoundedCornerBitmap(image, 60));
+        gamePhoto.setImageResource(game.getPhoto());
+//        Bitmap image = BitmapFactory.decodeResource(getContext().getResources(), game.getPhoto());
+//        gamePhoto.setImageBitmap(ImageHelper.getRoundedCornerBitmap(image, 60));
         TextView gameDescription = (TextView) gameDetailView.findViewById(R.id.game_description);
         gameDescription.setText(game.getDescription());
 
